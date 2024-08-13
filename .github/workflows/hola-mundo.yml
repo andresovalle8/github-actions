@@ -1,20 +1,13 @@
-name: Hola Mundo en Windows
-
-on:
-  push:
-    branches: [ main ]
-
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions!
+on: [push]
 jobs:
-  build:
-    runs-on: windows-latest
+  hola-mundo:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version:
-  '3.10'
-      - name: Create a Python file
-        run: echo "print('Hola, mundo!')" > hola.py
-      - name: Run the Python script
-        run: python hola.py
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script
+        run: python hola_mundo.py
